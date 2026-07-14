@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="576" viewBox="0 0 960 576" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="14">
+  <!-- Terminal transcript of a real run of `apidrift diff` and `apidrift check`
+       against the examples/pricelib fixtures turned into a git history
+       (see scripts/smoke.sh). Text content is copied verbatim. -->
+  <rect width="960" height="576" rx="10" fill="#0d1117"/>
+  <rect width="960" height="34" rx="10" fill="#161b22"/>
+  <rect y="20" width="960" height="14" fill="#161b22"/>
+  <circle cx="22" cy="17" r="6" fill="#ff5f57"/>
+  <circle cx="42" cy="17" r="6" fill="#febc2e"/>
+  <circle cx="62" cy="17" r="6" fill="#28c840"/>
+  <text x="480" y="22" fill="#8b949e" text-anchor="middle" font-size="12">apidrift — catch the breaking change before it ships</text>
+  <g fill="#c9d1d9">
+    <text x="24" y="62"><tspan fill="#7ee787">$</tspan> apidrift diff v1.4.2 HEAD</text>
+    <text x="24" y="86" fill="#8b949e">apidrift: v1.4.2 -&gt; HEAD (package pricelib)</text>
+    <text x="24" y="114"><tspan fill="#f85149">MAJOR</tspan>  pricelib.money.convert: parameter rate became keyword-only; positional callers break</text>
+    <text x="24" y="138"><tspan fill="#f85149">MAJOR</tspan>  pricelib.money.format_price: public function removed</text>
+    <text x="24" y="162"><tspan fill="#7ee787">MINOR</tspan>  pricelib.with_tax: public reexport added</text>
+    <text x="24" y="186"><tspan fill="#7ee787">MINOR</tspan>  pricelib.cart.Cart.add: optional parameter note added (default None)</text>
+    <text x="24" y="210"><tspan fill="#7ee787">MINOR</tspan>  pricelib.money.Money.rounded: optional parameter mode added (default 'half-even')</text>
+    <text x="24" y="234"><tspan fill="#7ee787">MINOR</tspan>  pricelib.tax: public module added</text>
+    <text x="24" y="258"><tspan fill="#d29922">PATCH</tspan>  pricelib.money.DEFAULT_CURRENCY: value changed from 'USD' to 'EUR'</text>
+    <text x="24" y="290">2 breaking, 4 additions, 1 compatible</text>
+    <text x="24" y="314">suggested bump: <tspan fill="#f85149">major</tspan> (1.4.2 -&gt; 2.0.0)</text>
+    <text x="24" y="358"><tspan fill="#7ee787">$</tspan> apidrift check v1.4.2 HEAD  <tspan fill="#8b949e"># the release declares only 1.5.0</tspan></text>
+    <text x="24" y="382" fill="#8b949e">apidrift check: v1.4.2 (1.4.2) -&gt; HEAD (1.5.0), package pricelib</text>
+    <text x="24" y="406">required bump: <tspan fill="#f85149">major</tspan>, declared bump: <tspan fill="#d29922">minor</tspan></text>
+    <text x="24" y="430" fill="#f85149">FAIL: API changes require at least a major bump (e.g. 2.0.0)</text>
+    <text x="24" y="454"><tspan fill="#7ee787">$</tspan> echo $?  <tspan fill="#8b949e"># non-zero exit: ready for CI</tspan></text>
+    <text x="24" y="478" fill="#f85149">1</text>
+    <text x="24" y="522"><tspan fill="#7ee787">$</tspan> apidrift bump v1.4.2 HEAD</text>
+    <text x="24" y="546" fill="#f85149">major</text>
+  </g>
+</svg>
